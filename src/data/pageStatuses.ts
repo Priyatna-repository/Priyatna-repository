@@ -5,14 +5,10 @@ export const PAGE_STATUSES: SitePageStatuses = {
     status: 'active',
   } satisfies PageStatusConfig,
   blog: {
-    status: 'upcoming',
-    message: 'Blog is coming in Phase 2.',
-    estimate: 'Q2 2026',
+    status: 'active',
   } satisfies PageStatusConfig,
   showcase: {
-    status: 'upcoming',
-    message: 'Project showcase is coming in Phase 2.',
-    estimate: 'Q2 2026',
+    status: 'active',
   } satisfies PageStatusConfig,
   labs: {
     status: 'active',
