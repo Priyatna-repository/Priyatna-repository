@@ -33,9 +33,12 @@ export default function Ticker() {
         </div>
       </div>
 
-      {/* Theme toggle embedded in the ticker bar — z-index stays at ticker level (100),
-          never floats above the global loader (10000) */}
-      <button className="ticker-theme-btn" onClick={toggleTheme} aria-label="Toggle theme">
+      <button
+        className="ticker-theme-btn"
+        onClick={toggleTheme}
+        aria-label="Toggle theme"
+        data-tooltip={theme === 'light' ? 'Dark Mode' : 'Light Mode'}
+      >
         {theme === 'light' ? '☼' : '☾'}
       </button>
     </div>
