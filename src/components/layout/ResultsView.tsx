@@ -1,4 +1,5 @@
 'use client'
+import '@/styles/results.css'
 import { useState } from 'react'
 import { useSearchStore } from '@/store/searchStore'
 import { useUIStore } from '@/store/uiStore'

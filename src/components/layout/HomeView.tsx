@@ -1,4 +1,5 @@
 'use client'
+import '@/styles/home.css'
 import { useState, useRef, useEffect, useMemo } from 'react'
 import Image from 'next/image'
 import { useSearchStore } from '@/store/searchStore'

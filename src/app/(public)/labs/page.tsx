@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+import '@/styles/pages/labs.css'
 import Link from 'next/link'
 import { getAllLabs } from '@/data/labs'
 import { PAGE_STATUSES } from '@/data/pageStatuses'

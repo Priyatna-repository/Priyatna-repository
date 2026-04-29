@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+import '@/styles/pages/showcase.css'
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
 import { getAllProjects, getProjectBySlug } from '@/data/projects'

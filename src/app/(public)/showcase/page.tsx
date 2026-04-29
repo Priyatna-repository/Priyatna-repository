@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+import '@/styles/pages/showcase.css'
 import Link from 'next/link'
 import { getAllProjects, getFeaturedProjects, getAllProjectCategories } from '@/data/projects'
 import { PAGE_STATUSES } from '@/data/pageStatuses'

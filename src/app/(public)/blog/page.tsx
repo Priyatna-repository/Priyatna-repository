@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+import '@/styles/pages/blog.css'
 import Link from 'next/link'
 import { getAllPosts, getAllPostTags } from '@/data/posts'
 import { PAGE_STATUSES } from '@/data/pageStatuses'

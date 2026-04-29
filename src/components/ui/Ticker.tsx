@@ -1,4 +1,5 @@
 'use client'
+import '@/styles/ticker.css'
 import { TICKER_ITEMS } from '@/data/ticker'
 import { useUIStore } from '@/store/uiStore'
 

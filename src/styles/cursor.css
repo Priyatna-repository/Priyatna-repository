@@ -1,0 +1,43 @@
+/* ─── CUSTOM CURSOR ─── */
+.cursor-dot {
+    position: fixed;
+    width: 8px;
+    height: 8px;
+    background: var(--ink);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 99999;
+    transform: translate(-50%, -50%);
+    transition: width 0.15s ease, height 0.15s ease, background 0.15s ease;
+}
+
+.cursor-ring {
+    position: fixed;
+    width: 32px;
+    height: 32px;
+    border: 1.5px solid var(--ink);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 99998;
+    transform: translate(-50%, -50%);
+    opacity: 0.35;
+    transition: width 0.15s ease, height 0.15s ease, opacity 0.15s ease;
+}
+
+/* ─── HOVER STATES ─── */
+/* Uses :has() — cannot be done with Tailwind classes */
+body:has(a:hover) .cursor-dot,
+body:has(button:hover) .cursor-dot {
+    width: 20px;
+    height: 20px;
+    background: var(--accent2);
+    transition: width 0.15s ease, height 0.15s ease, background 0.15s ease;
+}
+
+body:has(a:hover) .cursor-ring,
+body:has(button:hover) .cursor-ring {
+    width: 60px;
+    height: 60px;
+    opacity: 0.15;
+    transition: width 0.15s ease, height 0.15s ease;
+}

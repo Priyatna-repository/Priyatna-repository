@@ -1,4 +1,5 @@
 'use client'
+import '@/styles/cursor.css'
 import { useEffect, useRef, useState } from 'react'
 
 export default function CustomCursor() {
