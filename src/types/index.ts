@@ -68,13 +68,17 @@ export interface ResultCard {
 
 // ─── Content ─────────────────────────────────────────────────────────────────
 export interface Post {
+  id: string
   slug: string
   title: string
   excerpt: string
-  date: string
-  status: PostStatus
+  content: string
+  coverImage?: string
   tags: string[]
-  readTime?: number
+  status: PostStatus
+  publishedAt: string
+  createdAt: string
+  readTimeMin?: number
 }
 
 export interface Project {
@@ -82,11 +86,15 @@ export interface Project {
   slug: string
   title: string
   description: string
-  tags: string[]
-  date: string
-  url?: string
-  imageUrl?: string
-  featured?: boolean
+  fullDescription?: string
+  thumbnail?: string
+  demoUrl?: string
+  repoUrl?: string
+  techStack: string[]
+  category: string
+  featured: boolean
+  order: number
+  status: 'active' | 'archived'
 }
 
 // ─── Page config ──────────────────────────────────────────────────────────────
