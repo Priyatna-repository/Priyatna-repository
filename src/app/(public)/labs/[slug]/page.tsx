@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+import '@/styles/pages/labs.css'
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
 import { getAllLabs, getLabBySlug } from '@/data/labs'

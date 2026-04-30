@@ -5,6 +5,9 @@ import { persist, createJSONStorage } from 'zustand/middleware'
 interface UIStore {
   theme: 'light' | 'dark'
   toggleTheme: () => void
+  isLoaderDone: boolean
+  setLoaderDone: () => void
+  resetLoader: () => void
 }
 
 export const useUIStore = create<UIStore>()(
@@ -12,6 +15,9 @@ export const useUIStore = create<UIStore>()(
     (set) => ({
       theme: 'light',
       toggleTheme: () => set((state) => ({ theme: state.theme === 'light' ? 'dark' : 'light' })),
+      isLoaderDone: false,
+      setLoaderDone: () => set({ isLoaderDone: true }),
+      resetLoader: () => set({ isLoaderDone: false }),
     }),
     {
       name: 'priyatna-ui',
