@@ -2,22 +2,14 @@
 import '@/styles/home.css'
 import { useState, useRef, useEffect, useMemo } from 'react'
 import Image from 'next/image'
-import Link from 'next/link'
 import { useSearchStore } from '@/store/searchStore'
-import { useUIStore } from '@/store/uiStore'
-import { SUGGESTIONS, QUICK_CHIPS, SHORTCUTS } from '@/data'
-import { getAllPosts } from '@/data/posts'
-import { getAllProjects } from '@/data/projects'
-import { getAllLabs } from '@/data/labs'
+import { SUGGESTIONS, QUICK_CHIPS } from '@/data'
 
-const TOTAL_ENTRIES = getAllPosts().length + getAllProjects().length + getAllLabs().length
-
-export default function HomeView({ onCounterReady }: { onCounterReady: boolean }) {
+export default function HomeView() {
   const [localInput, setLocalInput] = useState('')
   const [isFocused, setIsFocused] = useState(false)
   const [activeIndex, setActiveIndex] = useState(-1)
   const { runSearch, history } = useSearchStore()
-  const openLabs = useUIStore((s) => s.openLabs)
   const wrapRef = useRef<HTMLDivElement>(null)
 
   const filteredSuggestions = useMemo(() => {
@@ -110,15 +102,6 @@ export default function HomeView({ onCounterReady }: { onCounterReady: boolean }
           <span className="hl-dot">.</span>
         </div>
 
-        {/* Sub-row: tagline + entry counter */}
-        <div className="home-sub-row">
-          <div className="home-sub-left">Creative Archive</div>
-          <div className="home-counter">
-            <span className="hc-num">{TOTAL_ENTRIES}</span>
-            entries in archive
-          </div>
-        </div>
-
         {/* Search Box */}
         <div className="search-center-wrap" ref={wrapRef}>
           <div className="search-input-anchor">
@@ -185,29 +168,6 @@ export default function HomeView({ onCounterReady }: { onCounterReady: boolean }
               </button>
             ))}
           </div>
-        </div>
-
-        {/* Shortcuts */}
-        <div className="home-shortcuts">
-          {SHORTCUTS.map((sc) => (
-            <div
-              key={sc.label}
-              className="sc-item"
-              onClick={() => sc.query ? runSearch(sc.query) : openLabs()}
-              style={{ cursor: 'none' }}
-            >
-              <div className="sc-icon">{sc.icon}</div>
-              <div className="sc-label">{sc.label}</div>
-            </div>
-          ))}
-        </div>
-
-        {/* Footer links */}
-        <div className="home-footer-links">
-          <Link href="/blog" className="hfl">Blog</Link>
-          <Link href="/showcase" className="hfl">Showcase</Link>
-          <Link href="/labs" className="hfl">Labs</Link>
-          <span className="hfl" onClick={() => runSearch('contact priyatna')} style={{ cursor: 'none' }}>Contact</span>
         </div>
       </div>
     </div>

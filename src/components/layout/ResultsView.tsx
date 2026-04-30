@@ -63,33 +63,6 @@ function ResultCardItem({ result }: { result: SearchResult }) {
   )
 }
 
-function LabsSidePanel() {
-  return (
-    <div className="labs-card">
-      <div className="labs-card-header">
-        <div className="lch-hex">⬡</div>
-        <div className="lch-info">
-          <div className="lch-title">ADDON LABS</div>
-          <div className="lch-sub">Creative toolkit</div>
-        </div>
-        <div className="lch-badge">LIVE</div>
-      </div>
-      {active_labs.slice(0, 4).map((lab) => (
-        <Link key={lab.id} href={`/labs/${lab.slug}`} className="lab-tool-row" style={{ textDecoration: 'none' }}>
-          <span style={{ fontSize: 18 }}>{lab.icon}</span>
-          <div style={{ flex: 1 }}>
-            <div className="ltr-name">{lab.name}</div>
-            <div className="ltr-desc">{lab.description}</div>
-          </div>
-          <span style={{ fontSize: 10, color: 'var(--muted2)', fontFamily: 'var(--f-mono)' }}>
-            {lab.version}
-          </span>
-        </Link>
-      ))}
-    </div>
-  )
-}
-
 export default function ResultsView() {
   const { query, goHome, runSearch: storeSearch } = useSearchStore()
   const theme = useUIStore((s) => s.theme)
@@ -159,23 +132,17 @@ export default function ResultsView() {
         </div>
       </div>
 
-      {/* Two-column layout */}
-      <div className="rv-layout">
-        <div className="results-content">
-          <div className="results-meta">
-            {filtered.length} result{filtered.length !== 1 ? 's' : ''} for &ldquo;{query}&rdquo;
-          </div>
-
-          {filtered.length > 0 ? (
-            filtered.map((result) => <ResultCardItem key={result.id} result={result} />)
-          ) : (
-            <div className="results-empty">NO RESULTS FOUND</div>
-          )}
+      {/* Results list */}
+      <div className="results-content">
+        <div className="results-meta">
+          {filtered.length} result{filtered.length !== 1 ? 's' : ''} for &ldquo;{query}&rdquo;
         </div>
 
-        <div className="results-sidebar">
-          <LabsSidePanel />
-        </div>
+        {filtered.length > 0 ? (
+          filtered.map((result) => <ResultCardItem key={result.id} result={result} />)
+        ) : (
+          <div className="results-empty">NO RESULTS FOUND</div>
+        )}
       </div>
 
     </div>

@@ -2,9 +2,12 @@
 import '@/styles/ticker.css'
 import { TICKER_ITEMS } from '@/data/ticker'
 import { useUIStore } from '@/store/uiStore'
+import { useSearchStore } from '@/store/searchStore'
 
 export default function Ticker() {
   const { theme, toggleTheme } = useUIStore()
+  const isLoaderDone = useUIStore((s) => s.isLoaderDone)
+  const isResultsView = useSearchStore((s) => s.isResultsView)
   const displayItems = [...TICKER_ITEMS, ...TICKER_ITEMS]
 
   const pauseTrack = (wrap: EventTarget & HTMLDivElement) => {
@@ -17,7 +20,7 @@ export default function Ticker() {
   }
 
   return (
-    <div className="ticker-wrap">
+    <div className={`ticker-wrap${(isLoaderDone && !isResultsView) ? ' ticker-home' : ''}`}>
       {/* Scrolling area — overflow is clipped on this inner div */}
       <div
         className="ticker-scroll"

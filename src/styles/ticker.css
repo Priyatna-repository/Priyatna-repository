@@ -20,52 +20,82 @@
 }
 
 .ticker-theme-btn {
-  flex-shrink: 0;
-  display: flex;
-  align-items: center;
-  padding: 0 14px;
-  background: none;
-  border: none;
-  border-left: 1px solid rgba(255, 255, 255, 0.1);
-  color: var(--muted2, #b0a898);
-  font-size: 14px;
-  cursor: none;
-  transition: color 0.2s, background 0.2s;
-  position: relative;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    padding: 0 14px;
+    background: none;
+    border: none;
+    border-left: 1px solid rgba(255, 255, 255, 0.1);
+    color: var(--muted2);
+    font-size: 14px;
+    cursor: none;
+    transition: color 0.2s, background 0.2s;
+    position: relative;
 }
 
 .ticker-theme-btn:hover {
-  color: var(--paper);
-  background: rgba(255, 255, 255, 0.06);
+    color: var(--paper);
+    background: rgba(255, 255, 255, 0.06);
+}
+
+/* Home view (light mode): cream ticker, dark text */
+.ticker-home {
+    background: #f5f2ec;
+    border-bottom: 1px solid rgba(10, 10, 10, 0.15);
+}
+
+.ticker-home .ticker-item {
+    color: #0a0a0a;
+}
+
+.ticker-home .ticker-theme-btn {
+    border-left: 1px solid rgba(10, 10, 10, 0.12);
+    color: #7a7060;
+}
+
+.ticker-home .ticker-theme-btn:hover {
+    color: #0a0a0a;
+    background: rgba(10, 10, 10, 0.06);
+}
+
+/* Dark mode: var(--ink) = #f5f2ec so ticker is cream/light — button needs dark-on-light styling */
+[data-theme='dark'] .ticker-theme-btn {
+    border-left: 1px solid rgba(10, 10, 10, 0.12);
+}
+
+[data-theme='dark'] .ticker-theme-btn:hover {
+    color: #0a0a0a;
+    background: rgba(10, 10, 10, 0.06);
 }
 
 /* ─── TOOLTIP ─── */
 .ticker-theme-btn::after {
-  content: attr(data-tooltip);
-  position: absolute;
-  top: calc(100% + 8px);
-  right: 0;
-  left: auto;
-  transform: translateY(-4px);
-  background: var(--paper);
-  color: var(--ink);
-  font-family: var(--f-mono);
-  font-size: 9px;
-  font-weight: 700;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  white-space: nowrap;
-  padding: 5px 10px;
-  border: 1px solid var(--border-light);
-  pointer-events: none;
-  opacity: 0;
-  transition: opacity 0.15s ease, transform 0.15s ease;
-  z-index: 999;
+    content: attr(data-tooltip);
+    position: absolute;
+    top: calc(100% + 8px);
+    right: 0;
+    left: auto;
+    transform: translateY(-4px);
+    background: #0a0a0a;
+    color: #f5f2ec;
+    font-family: var(--f-mono);
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    white-space: nowrap;
+    padding: 5px 10px;
+    border: 1px solid rgba(10, 10, 10, 0.2);
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.15s ease, transform 0.15s ease;
+    z-index: 999;
 }
 
 .ticker-theme-btn:hover::after {
-  opacity: 1;
-  transform: translateY(0);
+    opacity: 1;
+    transform: translateY(0);
 }
 
 .ticker-track {
