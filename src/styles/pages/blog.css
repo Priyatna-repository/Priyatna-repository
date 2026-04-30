@@ -55,10 +55,13 @@
     padding: 12px 20px;
     color: var(--muted2);
     text-decoration: none;
+    border: none;
+    background: none;
     border-bottom: 2px solid transparent;
     white-space: nowrap;
     transition: color .2s;
     margin-bottom: -1px;
+    cursor: none;
 }
 .bp-tag:hover { color: var(--ink); }
 .bp-tag.active { color: var(--ink); border-bottom-color: var(--accent); }
@@ -155,11 +158,67 @@
 
 /* ─── BLOG DETAIL ─── */
 .blog-detail {
-    max-width: 720px;
+    max-width: 1100px;
     margin: 0 auto;
     padding: 40px 48px 80px;
     min-height: calc(100vh - 30px);
 }
+
+.bd-layout {
+    display: grid;
+    grid-template-columns: 1fr 280px;
+    gap: 64px;
+    align-items: start;
+}
+
+.bd-sidebar {
+    position: sticky;
+    top: 60px;
+}
+
+/* ─── TABLE OF CONTENTS ─── */
+.toc { margin-bottom: 48px; }
+
+.toc-label {
+    font-size: 9px;
+    font-family: var(--f-mono);
+    font-weight: 700;
+    letter-spacing: .16em;
+    color: var(--muted2);
+    margin-bottom: 16px;
+    text-transform: uppercase;
+}
+
+.toc-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    border-left: 1px solid var(--border-light);
+}
+
+.toc-item { padding: 0; }
+
+.toc-link {
+    display: block;
+    font-size: 11px;
+    font-family: var(--f-mono);
+    color: var(--muted2);
+    text-decoration: none;
+    padding: 6px 0 6px 16px;
+    border-left: 2px solid transparent;
+    margin-left: -1px;
+    transition: color .2s, border-color .2s;
+    line-height: 1.5;
+}
+
+.toc-link:hover { color: var(--ink); }
+
+.toc-item.active .toc-link {
+    color: var(--ink);
+    border-left-color: var(--accent);
+}
+
+.toc-h3 .toc-link { padding-left: 28px; font-size: 10px; }
 
 .bd-crumb {
     display: flex;
@@ -301,8 +360,17 @@
 
 .bdrc-date { font-size: 10px; font-family: var(--f-mono); color: var(--muted2); }
 
+.bp-empty {
+    font-size: 13px;
+    color: var(--muted2);
+    padding: 40px 0;
+    font-family: var(--f-mono);
+}
+
 /* ─── RESPONSIVE ─── */
 @media (max-width: 960px) {
+    .bd-layout { grid-template-columns: 1fr; gap: 40px; }
+    .bd-sidebar { position: static; }
     .bd-related-list { grid-template-columns: 1fr; }
 }
 
